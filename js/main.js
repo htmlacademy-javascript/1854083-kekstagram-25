@@ -1,19 +1,12 @@
-
-const getRandomIntNumber = function (from, before) {
-  if (before <= from) {
-    throw new Error('Значение before должно быть меньше , чем from');
+const getRandomIntNumber = function (from, to) {
+  if (to <= from) {
+    throw new Error('Значение from должно быть больше , чем to');
   }
-  return Math.random() * (before - from + 1) + from;
+  return Math.random() * (to - from + 1) + from;
 };
 getRandomIntNumber(1, 100);
 
-
-// eslint-disable-next-line no-unused-vars
-const getChecked = function (stringChecked, maxLine ) {
-  if(stringChecked === maxLine) {
-    return true;
-  // eslint-disable-next-line no-unused-expressions
-  }else {(stringChecked > maxLine) || (stringChecked < maxLine) ;}
-  return false;
-};
-getChecked(10, 10);
+function checkMaxLength (string, length) {
+  return string.length <= length;
+}
+checkMaxLength(1, 100);
