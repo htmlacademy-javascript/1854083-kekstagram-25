@@ -1,15 +1,3 @@
-const getRandomIntNumber = function (from, to) {
-  if (from < to) {
-    throw new Error('Значение from должно быть меньше, to');
-  }
-  return Math.floor(Math.random() * (to - from + 1) + from);
-};
-
-function checkMaxLength (string , maxLength) {
-
-  return string.length <= maxLength;
-}
-
 const DESCRIPTION = [
   'Красивый пляж',
   'Указатель',
@@ -75,22 +63,42 @@ const COMMENTS = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const GENERATE_PHOTO = 25;
+const PHOTO = 25;
 
 const getRandomIntNumber = function (a, b) {
+  if (a < b) {
+    throw new Error('Значение a должно быть меньше, b');
+  }
   return Math.floor(Math.random() * (b - a + 1) + a);
 };
 
-const creatDescripComments = () => {
-  const comments = [];
-   comments[] = {
-    id: getRandomIntNumber(1, 25)
-    avatar: img/avatar-{ getRandomIntNumber(1, 6) }.svg,
-    message: COMMENTS[getRandomIntNumber(0, COMMENTS.length -1)],
-    name: NAMES[getRandomIntNumber(0, NAMES.length - 1)],
-  };
-  return comments;
+function checkMaxLength (string , maxLength) {
+  return string.length <= maxLength;
+}
+
+const getRandomElement = (elements) => {
+  return elements[getRandomElement(0, elements.length - 1)];
 };
 
-const producePhotos = Array.from({GENERATE_PHOTO: 25}, creatDescripComments);
+ const commentObj = (comments) => {
+  
+ {
+  id: getRandomIntNumber(1, 25),
+  avatar: 'img/avatar(getRandomIntNumber(1, 6)).svg',
+  message: getRandomElement(COMMENTS),
+  name: getRandomElement(NAMES),
+  }
 
+
+const creatDescriptionPhoto = () => {
+  return {
+  id: getRandomIntNumber(1, 25),
+  url: 'photos/(getRandomIntNumber(1, 25)).jpg',
+  description: getRandomElement(DESCRIPTION),
+  likes: getRandomIntNumber(15, 200),
+  }; 
+}
+
+const generationPhotos = Array.from({length: PHOTO}, creatDescriptionPhoto);
+
+console.log(generationPhotos);
