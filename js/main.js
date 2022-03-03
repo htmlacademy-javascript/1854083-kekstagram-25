@@ -1,4 +1,4 @@
-const DESCRIPTION = [
+const DESCRIPTIONS = [
   'Красивый пляж',
   'Указатель',
   'Тропический остров',
@@ -63,7 +63,23 @@ const COMMENTS = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const PHOTO = 25;
+const USERS_PHOTOS = 25;
+
+const MIN_NUMBER_ID_DESCRIPTION = 1;
+
+const MAX_NUMBER_ID_DESCRIPTION = 25;
+
+const RANDOM_AVATAR_FROM = 1;
+
+const RANDOM_AVATAR_TO = 6;
+
+const ADDRESS_IMAGE_FROM = 1;
+
+const ADDRESS_IMAGE_TO = 25;
+
+const MIN_QUANTITY_LIKES = 15;
+
+const MAX_QUANTITY_LIKES = 200;
 
 const getRandomIntNumber = function (a, b) {
   if (a < b) {
@@ -80,25 +96,27 @@ const getRandomElement = (elements) => {
   return elements[getRandomElement(0, elements.length - 1)];
 };
 
- const commentObj = (comments) => {
-  
- {
-  id: getRandomIntNumber(1, 25),
-  avatar: 'img/avatar(getRandomIntNumber(1, 6)).svg',
+const generateComments = () => {
+  return {
+  id: getRandomIntNumber(MIN_NUMBER_ID_DESCRIPTION, MAX_NUMBER_ID_DESCRIPTION),
+  avatar: `img/avatar(${getRandomIntNumber(RANDOM_AVATAR_FROM, RANDOM_AVATAR_TO)}).svg`,
   message: getRandomElement(COMMENTS),
   name: getRandomElement(NAMES),
-  }
-
-
-const creatDescriptionPhoto = () => {
-  return {
-  id: getRandomIntNumber(1, 25),
-  url: 'photos/(getRandomIntNumber(1, 25)).jpg',
-  description: getRandomElement(DESCRIPTION),
-  likes: getRandomIntNumber(15, 200),
-  }; 
+};
 }
+ 
+const createDescriptionPhoto = (id, url) => {
+  return {
+    id: getRandomIntNumber(MIN_NUMBER_ID_DESCRIPTION, MAX_NUMBER_ID_DESCRIPTION),
+    url: `photos/(${ getRandomIntNumber(ADDRESS_IMAGE_FROM, ADDRESS_IMAGE_TO)}).jpg`,
+    description: getRandomElement(DESCRIPTIONS),
+    likes: getRandomIntNumber(MIN_QUANTITY_LIKES, MAX_QUANTITY_LIKES),
+    comment: 
+  };
+};
 
-const generationPhotos = Array.from({length: PHOTO}, creatDescriptionPhoto);
 
-console.log(generationPhotos);
+
+const photos = Array.from({length: USERS_PHOTOS}, (_, index) => createDescriptionPhoto(index));
+
+console.log(photos);
