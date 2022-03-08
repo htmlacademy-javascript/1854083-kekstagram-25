@@ -86,7 +86,6 @@ const checkMaxLength = (string, maxLength) => string.length <= maxLength;
 
 const getRandomElement = (elements) => elements[getRandomIntNumber(0, elements.length - 1)];
 
-
 const generateComment = (id) => ({
   id,
   avatar: `img/avatar-${getRandomIntNumber(RANDOM_AVATAR_FROM, RANDOM_AVATAR_TO)}.svg`,
@@ -103,5 +102,3 @@ const createDescriptionPhoto = (id) => ({
 });
 
 const photos = Array.from({length: PHOTOS_COUNT}, (_, index) => createDescriptionPhoto(index));
-
-console.log(photos);
