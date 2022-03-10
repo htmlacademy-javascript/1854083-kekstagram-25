@@ -1,4 +1,4 @@
-import {getRandomIntNumber} from './until.js';
+import {getRandomIntNumber, COMMENTS_COUNT, getRandomElement} from './util.js';
 
 const DESCRIPTIONS = [
   'Красивый пляж',
@@ -72,10 +72,6 @@ const MIN_QUANTITY_LIKES = 15;
 
 const MAX_QUANTITY_LIKES = 200;
 
-const COMMENTS_COUNT = 20;
-
-const getRandomElement = (elements) => elements[getRandomIntNumber(0, elements.length - 1)];
-
 const generateComment = (id) => ({
   id,
   avatar: `img/avatar-${getRandomIntNumber(RANDOM_AVATAR_FROM, RANDOM_AVATAR_TO)}.svg`,
@@ -91,6 +87,6 @@ const createDescriptionPhoto = (id) => ({
   comments: Array.from({length: COMMENTS_COUNT}, (_, index) => generateComment(index)),
 });
 
-const photos =  Array.from({length: PHOTOS_COUNT}, (_, index) => createDescriptionPhoto(index));
+const photos = () => Array.from({length: PHOTOS_COUNT}, createDescriptionPhoto);
 
 export {photos};

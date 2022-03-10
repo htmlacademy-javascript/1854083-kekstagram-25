@@ -7,4 +7,8 @@ const getRandomIntNumber = function (a, b) {
 
 const checkMaxLength = (string, maxLength) => string.length <= maxLength;
 
-export {getRandomIntNumber, checkMaxLength};
+const COMMENTS_COUNT = 20;
+
+const getRandomElement = (elements) => elements[getRandomIntNumber(0, elements.length - 1)];
+
+export {getRandomIntNumber, checkMaxLength, COMMENTS_COUNT, getRandomElement};
