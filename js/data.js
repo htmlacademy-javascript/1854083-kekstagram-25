@@ -62,8 +62,6 @@ const COMMENTS = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const PHOTOS_COUNT = 25;
-
 const RANDOM_AVATAR_FROM = 1;
 
 const RANDOM_AVATAR_TO = 6;
@@ -87,6 +85,6 @@ const createDescriptionPhoto = (id) => ({
   comments: Array.from({length: COMMENTS_COUNT}, (_, index) => generateComment(index)),
 });
 
-const photos = () => Array.from({length: PHOTOS_COUNT}, createDescriptionPhoto);
+const generatePhotos = (count) => Array.from({length: count}, (_, index) => createDescriptionPhoto(index + 1));
 
-export {photos};
+export {generatePhotos};
