@@ -1,8 +1,8 @@
 import {generatePhotos} from './data.js';
-import {similarListFragment} from './pictures.js';
+import {renderPhotos} from './pictures.js';
 
 const PHOTOS_COUNT = 25;
 
-generatePhotos(PHOTOS_COUNT);
+const photos = generatePhotos(PHOTOS_COUNT);
 
-similarListFragment();
+renderPhotos(photos);
