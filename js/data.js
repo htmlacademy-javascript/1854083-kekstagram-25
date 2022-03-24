@@ -80,7 +80,7 @@ const generateComment = (id) => ({
 const createDescriptionPhoto = (id) => ({
   id,
   url: `photos/${id}.jpg`,
-  description: getRandomElement(DESCRIPTIONS),
+  description: DESCRIPTIONS[id - 1],
   likes: getRandomIntNumber(MIN_QUANTITY_LIKES, MAX_QUANTITY_LIKES),
   comments: Array.from({length: COMMENTS_COUNT}, (_, index) => generateComment(index)),
 });

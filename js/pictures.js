@@ -1,3 +1,6 @@
+import { showBigPicture } from './big-photo.js';
+
+
 const picturesContainer = document.querySelector('.pictures');
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
@@ -12,6 +15,7 @@ const renderPhotos = (pictures) => {
     pictureElement.querySelector ('.picture__img').src = picture.url;
     pictureElement.querySelector('.picture__likes').textContent = picture.likes;
     pictureElement.querySelector('.picture__comments').textContent = picture.comments.length;
+    pictureElement.addEventListener('click', () => showBigPicture(picture));
     similarListFragment.appendChild(pictureElement);
   });
 
@@ -19,3 +23,4 @@ const renderPhotos = (pictures) => {
 };
 
 export {renderPhotos};
+
