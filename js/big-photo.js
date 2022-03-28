@@ -35,20 +35,23 @@ const createComment = function (comment) {
   commentPhotoElement.src = comment.avatar;
   commentPhotoElement.alt = comment.name;
   commentTextElement.textContent = comment.message;
+
+
+  return commentElement;
 };
 
-export const provide = function (comments) {
+const renderComments = function(container, comments) {
   const fragment = document.createDocumentFragment();
-  comments.forEach((comment) => {
-    const otherComment = createComment(comment);
-    fragment.appendChild(otherComment);
+
+  comments.forEach((item) => {
+    fragment.appendChild(createComment(item));
   });
 
-  pictureBigComments.appendChild(fragment);
+  container.appendChild(fragment);
 };
 
-
 export const showBigPicture = (photo) => {
+
 
   document.body.classList.add('modal-open');
   pictureBig.classList.remove('hidden');
@@ -59,6 +62,10 @@ export const showBigPicture = (photo) => {
   pictureBig.querySelector('.likes-count').textContent = photo.likes;
   pictureBig.querySelector('.comments-count').textContent = photo.comments.length;
   pictureBig.querySelector ('.social__caption').textContent = photo.description;
-
-  document.addEventListener('keydown', onEscKeyDown);
+  pictureBigComments.innerHTML = '';
+  renderComments(pictureBigComments, photo.comments);
 };
+
+document.addEventListener('keydown', onEscKeyDown);
+
+
