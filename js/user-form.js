@@ -11,6 +11,7 @@ const imgUpLoadCancel = document.querySelector('#upload-cancel');
 const fieldHashtags = document.querySelector('.text__hashtags');
 const fieldDescription = document.querySelector('.text__description');
 
+
 const escapeKey = (evt) => evt.key === 'Escape';
 
 //отключение закрытия формы по ESC при фокусе на хэштеге или на комментарии
@@ -47,8 +48,13 @@ function offLoadNewPhoto () {
 }
 
 const pristine = new Pristine(imgUpLoadForm, {
-  classTo:  'img-upload__text-field',
-  errorTextParent: 'img-upload__text-field'});
+  classTo: 'img-upload__form',
+  errorClass: 'img-upload__form--invalid',
+  successClass: 'img-upload__form--valid',
+  errorTextParent: 'img-upload__text',
+  errorTextClass: 'img-upload__text-error',
+  errorTextTag: 'div',
+});
 
 function validateHashtags (value) {
   const hashtags = value.trim().toLowerCase().split(' ');
@@ -98,6 +104,7 @@ imgUpLoadForm.addEventListener('submit',(evt) => {
     evt.preventDefault();
   }
 });
+
 
 upLoadPhoto.addEventListener('change', onLoadNewPhoto);
 imgUpLoadCancel.addEventListener('click', offLoadNewPhoto);

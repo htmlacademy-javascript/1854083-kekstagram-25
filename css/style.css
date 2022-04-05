@@ -697,6 +697,10 @@ main {
   border-radius: 5px;
 }
 
+.pristine-error {
+  color: red;
+}
+
 
 /**
  * Кнопка для отправки изображения
