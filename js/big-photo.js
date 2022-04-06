@@ -7,7 +7,6 @@ const pictureBigComments = pictureBig.querySelector('.social__comments');
 const pictureBigComment = pictureBigComments.querySelector('.social__comment');
 const closeButton = pictureBig.querySelector('.big-picture__cancel');
 
-
 const onEscKeyDown = (evt) => {
   if (evt.key === ESC) {
     hideBigPicture();
@@ -36,7 +35,6 @@ const createComment = function (comment) {
   commentPhotoElement.alt = comment.name;
   commentTextElement.textContent = comment.message;
 
-
   return commentElement;
 };
 
@@ -52,7 +50,6 @@ const renderComments = function(container, comments) {
 
 export const showBigPicture = (photo) => {
 
-
   document.body.classList.add('modal-open');
   pictureBig.classList.remove('hidden');
   pictureSocialCommentCount.classList.add('hidden');
@@ -67,5 +64,3 @@ export const showBigPicture = (photo) => {
 };
 
 document.addEventListener('keydown', onEscKeyDown);
-
-
