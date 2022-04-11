@@ -10,7 +10,6 @@ const closeButton = pictureBig.querySelector('.big-picture__cancel');
 let commentsCountToShow;
 
 const createComment = function (comment) {
-  // pictureSocialCommentCount.innerHTML = `${commentsCountToShow} из ${currentComent.length} комментариев`;
   const commentElement = pictureBigComment.cloneNode(true);
   const commentPhotoElement = commentElement.querySelector('.social__picture');
   const commentTextElement = commentElement.querySelector('.social__text');
@@ -18,7 +17,6 @@ const createComment = function (comment) {
   commentPhotoElement.src = comment.avatar;
   commentPhotoElement.alt = comment.name;
   commentTextElement.textContent = comment.message;
-
   return commentElement;
 };
 
@@ -29,8 +27,10 @@ const renderComments = function(container, comments) {
 
   comments.slice(0, commentsCountToShow).forEach((item) => {
     fragment.appendChild(createComment(item));
-    commentsCountToShow += length;
-    pictureSocialCommentCount.childNodes[0].textContent = commentsCountToShow + ` из `;
+    if (commentsCountToShow > comments.length) {
+      commentsCountToShow = comments.length;
+    }
+    pictureSocialCommentCount.firstChild.textContent = `${commentsCountToShow} из `;
     pictureBigComments.appendChild(fragment);
   });
 
@@ -82,5 +82,4 @@ export const showBigPicture = (photo) => {
   };
 
   pictureCommentsLoader.addEventListener('click', onPictureCommentsLoaderClick);
-
 };
