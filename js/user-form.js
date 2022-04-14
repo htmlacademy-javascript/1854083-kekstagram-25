@@ -1,3 +1,6 @@
+import { initialValues } from './effect-photo.js';
+import { defaultEffects } from './effect-photo.js';
+
 const HASHTAG_MAX_LENGTH = 20;
 const HASHTAG_MAX_COUNT = 5;
 const HASHTAG_REGULAR_EXPRESSION = /^#[A-Za-zА-Яа-яёЁ0-9]{1,20}$/;
@@ -42,7 +45,9 @@ function offLoadNewPhoto () {
   imgUpLoadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
   removeUserFormEscapeKey();
+  initialValues();
   inputFile.value = '';
+  defaultEffects();
   fieldHashtags.value = '';
   fieldDescription.value = '';
 }
